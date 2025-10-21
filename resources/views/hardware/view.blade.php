@@ -793,6 +793,13 @@
                                                                 <a href="{{ $asset->{$field->db_column_name()} }}" target="_new">{{ $asset->{$field->db_column_name()} }}</a>
                                                             @elseif (($field->format=='DATE') && ($asset->{$field->db_column_name()}!=''))
                                                                 {{ \App\Helpers\Helper::getFormattedDateObject($asset->{$field->db_column_name()}, 'date', false) }}
+                                                            @elseif (($field->element=='radio') && ($asset->{$field->db_column_name()}!=''))
+                                                                @if (strtolower(trim($asset->{$field->db_column_name()})) == 'online')
+                                                                    <x-icon type="circle-solid" class="text-green" />
+                                                                @elseif (strtolower(trim($asset->{$field->db_column_name()})) == 'offline')
+                                                                    <x-icon type="circle-solid" class="text-red" />
+                                                                @endif
+                                                                {{ $asset->{$field->db_column_name()} }}
                                                             @else
                                                                 {!! nl2br(e($asset->{$field->db_column_name()})) !!}
                                                             @endif
