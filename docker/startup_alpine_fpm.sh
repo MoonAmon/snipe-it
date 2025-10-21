@@ -119,3 +119,4 @@ chown www-data:www-data /var/www/html/storage/logs/laravel.log
 echo [INFO docker entrypoint] End script execution
 
 exec "$@"
+
